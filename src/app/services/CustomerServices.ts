@@ -1,5 +1,5 @@
 import CustomerRepository from "../repositories/CustomerRepository"
-import CustomersPayload from "../interfaces/customersPayload"
+import CustomersPayload from "../interfaces/CustomersPayload"
 import RequestParams from "../interfaces/RequestParams"
 
 import RequestQuery from "../interfaces/RequestQuery"
