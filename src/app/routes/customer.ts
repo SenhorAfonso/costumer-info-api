@@ -1,25 +1,16 @@
 import { Router } from "express";
+import CustomerController from "../controllers/CustomerController";
+
 const router = Router()
 
-router.post('/customer', (req, res) => {
-  res.send('Create new customer')
-})
+router.post('/customer', CustomerController.createCustomer) 
 
-router.get('/customers', (req, res) => {
-  res.send('Get all customers')
-})
+router.get('/customers', CustomerController.getAllCustomers) 
 
-router.get('/customer/:id', (req, res) => {
-  res.send('Getting customer by id')
-})
+router.get('/customer/:id', CustomerController.getCustomerById) 
 
-router.put('/customer/:id', (req, res) => {
-  res.send('Updating a customer by id')
-})
+router.put('/customer/:id', CustomerController.updateCustomer) 
 
-
-router.delete('/customer/:id', (req, res) => {
-  res.send('Delete a customer')
-})
+router.delete('/customer/:id', CustomerController.deleteCustomer) 
 
 export = router
