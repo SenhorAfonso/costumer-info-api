@@ -1,27 +1,29 @@
+import CustomerRepository from "../repositories/CustomerRepository"
+
 class CustomerServices {
 
   async create(payload) {
-    const result = 'Create new customer'
+    const result = CustomerRepository.create(payload)
     return result
   }
 
   async list(payload) {
-    const result = 'Get all customers'
+    const result = CustomerRepository.list(payload)
     return result
   }
 
-  async getById(payload) {
-    const result = 'Getting customer by id'
+  async getById(id) {
+    const result = CustomerRepository.getById(id)
     return result
   }
 
-  async update(payload, reqBody) {
-    const result = 'Updating a customer by id'
+  async update(id, payload) {
+    const result = CustomerRepository.update(id, payload)
     return result
   }
 
-  async delete(payload) {
-    const result = 'Deleting customer by id'
+  async delete(id) {
+    const result = CustomerRepository.delete(id)
     return result
   }
 
