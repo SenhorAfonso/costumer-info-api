@@ -1,9 +1,10 @@
 import { Router } from "express";
 import CustomerController from "../controllers/CustomerController";
+import customerBodyValidation from "../validations/customerBodyValidation";
 
 const router = Router()
 
-router.post('/customer', CustomerController.createCustomer) 
+router.post('/customer', customerBodyValidation.createCustomer, CustomerController.createCustomer) 
 
 router.get('/customers', CustomerController.getAllCustomers) 
 

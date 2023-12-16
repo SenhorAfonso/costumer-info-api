@@ -1,33 +1,28 @@
 import Joi from "joi";
 import CustomersPayload from "../interfaces/CustomersPayload";
+import { NextFunction, Request } from "express";
 
+
+const MININUM_NAME_LENGHT = 3
+const MAXIMUM_NAME_LENGHT = 55 
+
+const MINIMUM_CPF_LENGHT = 11
+const MAXIMUM_CPF_LENGHT = 14
+ 
+const MINIMUM_CEP_LENGHT = 8
+const MAXIMUM_CEP_LENGHT = 9
 
 class CustomerValidator {
-  MININUM_NAME_LENGHT: number;
-  MAXIMUM_NAME_LENGHT: number
 
-  MINIMUM_CPF_LENGHT: number
-  MAXIMUM_CPF_LENGHT: number
-
-  MINIMUM_CEP_LENGHT: number
-  MAXIMUM_CEP_LENGHT: number
 
   constructor() {
-    this.MININUM_NAME_LENGHT = 3
-    this.MAXIMUM_NAME_LENGHT = 55
-
-    this.MINIMUM_CPF_LENGHT = 11
-    this.MAXIMUM_CPF_LENGHT = 14
-
-    this.MINIMUM_CEP_LENGHT = 8
-    this.MAXIMUM_CEP_LENGHT = 9
   }
 
-  createCustomer(payload: CustomersPayload) {
+  createCustomer(req: Request, res: Response, next: NextFunction) {
     const createCustomerValidator = Joi.object({
       name: Joi.string()
-        .min(this.MININUM_NAME_LENGHT)
-        .max(this.MAXIMUM_NAME_LENGHT)
+        .min(MININUM_NAME_LENGHT)
+        .max(MAXIMUM_NAME_LENGHT)
         .trim()
         .required(),
     
@@ -40,8 +35,8 @@ class CustomerValidator {
         .required(),
     
       cpf: Joi.string()
-        .min(this.MINIMUM_CPF_LENGHT)
-        .max(this.MAXIMUM_CPF_LENGHT)
+        .min(MINIMUM_CPF_LENGHT)
+        .max(MAXIMUM_CPF_LENGHT)
         .required(),
     
       password: Joi.string()
@@ -49,25 +44,27 @@ class CustomerValidator {
         .required(),
     
       cep: Joi.string()
-        .min(this.MINIMUM_CEP_LENGHT)
-        .max(this.MAXIMUM_CEP_LENGHT)
+        .min(MINIMUM_CEP_LENGHT)
+        .max(MAXIMUM_CEP_LENGHT)
         .required(),
     
       number: Joi.number()
         .required()
     })
 
-    const { error, value } = createCustomerValidator.validate(payload, {
+    const { error } = createCustomerValidator.validate(req.body, {
       abortEarly: false
     })
 
+
     if (error) {
-      throw error
+      next(error)
     } 
+
+    next()
 
   }
   
-
 }
 
-
+export default new CustomerValidator()
