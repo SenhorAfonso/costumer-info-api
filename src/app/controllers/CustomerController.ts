@@ -1,26 +1,32 @@
 import type { Request, Response } from "express"
+import CustomerServices from "../services/CustomerServices"
 
 class CustomerController {
 
   constructor() {}
 
   async createCustomer(req: Request, res: Response) {
-    return res.send('Create new customer')
+    const result = await CustomerServices.create(req.body)
+    return res.send(result)
   }
 
   async getAllCustomers(req: Request, res: Response) {
-    return res.send('Get all customers')
+    const result = await CustomerServices.list(req.params)
+    return res.send(result)
   }
   async getCustomerById(req: Request, res: Response) {
-    return res.send('Getting customer by id')
+    const result = await CustomerServices.getById(req.params)
+    return res.send(result)
   }
 
   async updateCustomer(req: Request, res: Response) {
-    return res.send('Updating a customer by id')
+    const result = await CustomerServices.update(req.params, req.body)
+    return res.send(result)
   }
 
   async deleteCustomer(req: Request, res: Response) {
-    return res.send('Delete a customer')
+    const result = await CustomerServices.delete(req.params)
+    return res.send(result)
   }
 
 }
