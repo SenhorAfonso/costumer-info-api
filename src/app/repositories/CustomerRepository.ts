@@ -1,5 +1,5 @@
 import customerSchema from "../db/schemas/customerSchema";
-import CustomersPayload from "../interfaces/customersPayload";
+import CustomersPayload from "../interfaces/CustomersPayload";
 import RequestQuery from "../interfaces/RequestQuery"
 
 
