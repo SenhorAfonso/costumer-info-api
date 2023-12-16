@@ -11,7 +11,7 @@ class CustomerController {
   }
 
   async getAllCustomers(req: Request, res: Response) {
-    const result = await CustomerServices.list(req.params)
+    const result = await CustomerServices.list(req.query)
   }
   async getCustomerById(req: Request, res: Response) {
     const result = await CustomerServices.getById(req.params)

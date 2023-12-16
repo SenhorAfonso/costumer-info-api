@@ -2,6 +2,8 @@ import CustomerRepository from "../repositories/CustomerRepository"
 import CustomersPayload from "../interfaces/customersPayload"
 import RequestParams from "../interfaces/RequestParams"
 
+import RequestQuery from "../interfaces/RequestQuery"
+
 class CustomerServices {
 
   async create(payload: CustomersPayload) {
@@ -9,7 +11,7 @@ class CustomerServices {
     return result
   }
 
-  async list(payload: CustomersPayload) {
+  async list(payload: RequestQuery) {
     const result = CustomerRepository.list(payload)
     return result
   }

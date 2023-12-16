@@ -1,5 +1,6 @@
 import customerSchema from "../db/schemas/customerSchema";
 import CustomersPayload from "../interfaces/customersPayload";
+import RequestQuery from "../interfaces/RequestQuery"
 
 
 class CustomerRepository {
@@ -8,7 +9,7 @@ class CustomerRepository {
     return await customerSchema.create(payload)
   }
 
-  async list(payload: CustomersPayload){
+  async list(payload: RequestQuery){
     return await customerSchema.find({})
   }
 
