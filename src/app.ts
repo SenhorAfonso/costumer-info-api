@@ -1,8 +1,8 @@
-import { server} from "./server";
+import server from "./server";
 
 const start = async(): Promise<void> => {
   try {
-    server.listen(5000, () => {
+    await server.listen(5000, () => {
       console.log('Server is listening at 5000 port.')
     })
   } catch (error) {

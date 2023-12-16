@@ -1,5 +1,5 @@
 import express from 'express'
-import { connectDB } from './app/db/connection'
+import connectDB from './app/db/connection'
 import routes from './app/routes/customer'
 
 class App {
@@ -8,7 +8,11 @@ class App {
   constructor() {
     this.server = express()
     this.middlewares()
-    connectDB()
+    this.database()
+  }
+
+  async database() {
+    await connectDB()
   }
 
   middlewares() {
@@ -18,5 +22,4 @@ class App {
 
 }
 
-export const server = new App().server
-exports = server
+export default new App().server

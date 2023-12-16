@@ -3,10 +3,16 @@ import mongoose from "mongoose"
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/')
+    return mongoose.connect('mongodb://127.0.0.1:27017/')
+      .then(() => {
+        console.log('Database connected.')
+      })
+      .catch((error) => {
+        console.log(`Error: ${error} during database connection.`)
+      })
   } catch (error) {
     console.log(error)
   }
 }
 
-exports = connectDB
+export default connectDB
