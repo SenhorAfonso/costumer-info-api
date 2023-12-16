@@ -1,5 +1,6 @@
 import CustomerRepository from "../repositories/CustomerRepository"
 import CustomersPayload from "../interfaces/customersPayload"
+import RequestParams from "../interfaces/RequestParams"
 
 class CustomerServices {
 
@@ -13,18 +14,18 @@ class CustomerServices {
     return result
   }
 
-  async getById(id: string) {
-    const result = CustomerRepository.getById(id)
+  async getById(params: RequestParams) {
+    const result = CustomerRepository.getById(params.id!)
     return result
   }
 
-  async update(id, payload: CustomersPayload) {
-    const result = CustomerRepository.update(id, payload)
+  async update(params: RequestParams, payload: CustomersPayload) {
+    const result = CustomerRepository.update(params.id!, payload)
     return result
   }
 
-  async delete(id: string) {
-    const result = CustomerRepository.delete(id)
+  async delete(params: RequestParams) {
+    const result = CustomerRepository.delete(params.id!)
     return result
   }
 
