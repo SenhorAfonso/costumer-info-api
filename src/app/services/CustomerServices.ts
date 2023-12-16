@@ -2,7 +2,7 @@ import CustomerRepository from "../repositories/CustomerRepository"
 
 class CustomerServices {
 
-  async create(payload) {
+  async create(payload: CustomerInterface) {
     const result = CustomerRepository.create(payload)
     return result
   }
