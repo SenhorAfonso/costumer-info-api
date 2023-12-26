@@ -1,6 +1,5 @@
 import Joi from "joi";
-import CustomersPayload from "../interfaces/CustomersPayload";
-import { NextFunction, Request } from "express";
+import { NextFunction, Response, Request } from "express";
 
 
 const MININUM_NAME_LENGHT = 3
@@ -18,7 +17,12 @@ class CustomerValidator {
   constructor() {
   }
 
-  createCustomer(req: Request, res: Response, next: NextFunction) {
+  public static createCustomer(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  )
+    {
     const createCustomerValidator = Joi.object({
       name: Joi.string()
         .min(MININUM_NAME_LENGHT)
@@ -58,6 +62,7 @@ class CustomerValidator {
 
 
     if (error) {
+      console.log('ACONTECEU UM ERRO')
       next(error)
     } 
 
@@ -67,4 +72,4 @@ class CustomerValidator {
   
 }
 
-export default new CustomerValidator()
+export default CustomerValidator
