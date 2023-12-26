@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 
 export const connectDB = async () => {
   try {
-    return mongoose.connect('mongodb://127.0.0.1:27017/')
+    return mongoose.connect('mongodb://127.0.0.1:27017/customers')
       .then(() => {
         console.log('Database connected.')
       })
